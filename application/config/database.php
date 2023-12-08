@@ -72,7 +72,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$hostname = '192.168.10.3';
+// $hostname = '192.168.10.3';
+$hostname = '127.0.0.1';
 
 $db['default'] = array(
 	'dsn'	=> '',
@@ -119,5 +120,3 @@ $db['hospital'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-

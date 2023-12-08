@@ -8,7 +8,7 @@
           <h3 class="card-title">Etiket Resep Harian Rawat Jalan</h3>
         </div>
         <div class="card-body">
-          <table id="rawjal" class="table table-bordered table-striped">
+          <table id="rawjal" class="table table-bordered table-striped nowrap" style="width:100%">
             <thead>
               <tr>
                 <th>No</th>
@@ -41,7 +41,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <table id="obat" class="table table-bordered table-striped">
+          <table id="obat" class="table table-bordered table-striped" style="width:100%">
             <thead>
               <tr>
                 <th>No</th>

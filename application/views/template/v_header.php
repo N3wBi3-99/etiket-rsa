@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
-<body class="sidebar-mini layout-fixed sidebar-collapse layout-navbar-fixed">
+<body class="sidebar-mini layout-fixed sidebar-collapse">
   <div class="wrapper">
     <!-- Preloader
     <div class="preloader flex-column justify-content-center align-items-center">

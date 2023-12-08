@@ -15,6 +15,7 @@ $(document).ready(function () {
 			},
 		],
 	});
+	// cek
 
 	setInterval(function () {
 		table.ajax.reload(null, false);
@@ -22,15 +23,32 @@ $(document).ready(function () {
 
 	//GET Data
 	$("#tampil_data").on("click", ".lihat", function () {
+		// menemapilkan data pasien di modal
+		let pasien = table.row($(this).closest("tr")).data();
+
+		var today = new Date();
+		let lahir = pasien[4].split("-");
+		let age = today.getFullYear() - lahir[2];
+		if (today.getMonth() < lahir[1] - 1) {
+			age -= 1;
+		} else if (today.getMonth() == lahir[1] - 1) {
+			if (today.getDate() < lahir[0]) {
+				age -= 1;
+			}
+		}
+
 		$("#dataObat").modal("show");
+		$(".modal-title").text(pasien[3] + " ( " + age + " Tahun )");
+
+		// proses ajax tabel obat
 		let id = $(this).attr("data");
 		let obat = $("#obat").DataTable({
 			processing: false,
 			serverside: false,
 			ajax: {
-				url: base_url + "obat/Rawat_jalan/getObat",
 				type: "GET",
 				data: { id: id },
+				url: base_url + "obat/Rawat_jalan/getObat",
 			},
 			columnDefs: [
 				{
@@ -40,6 +58,7 @@ $(document).ready(function () {
 				},
 			],
 		});
+		// end
 		$("#dataObat").on("hide.bs.modal", function () {
 			obat.destroy();
 		});

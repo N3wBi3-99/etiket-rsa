@@ -2,15 +2,26 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class M_etiket extends CI_Model
 {
-  function rawjal()
+  function rawjal($kodepa = null)
   {
-    $this->db->select('ADPA_RAWJAL.MEDREC, ADPA_RAWJAL.NAMAPA, ADPA_RAWJAL.KODEPA, ADPA_MERMAS.TGLLAH');
-    $this->db->from('ADPA_RAWJAL');
-    $this->db->join('ADPA_MERMAS', 'ADPA_RAWJAL.MEDREC = ADPA_MERMAS.MEDREC');
-    $this->db->where('ADPA_RAWJAL.MASUKI', date('Y-m-d'));
-    $this->db->where('ADPA_RAWJAL.NOPERK', 'C04');
-    $this->db->order_by('ADPA_RAWJAL.JAMCAT', 'desc');
-    return $this->db->get()->result();
+    if ($kodepa === null) {
+      $this->db->select('ADPA_RAWJAL.MEDREC, ADPA_RAWJAL.NAMAPA, ADPA_RAWJAL.KODEPA, ADPA_MERMAS.TGLLAH');
+      $this->db->from('ADPA_RAWJAL');
+      $this->db->join('ADPA_MERMAS', 'ADPA_RAWJAL.MEDREC = ADPA_MERMAS.MEDREC');
+      $this->db->where('ADPA_RAWJAL.MASUKI', '2023-05-20');
+      $this->db->where('ADPA_RAWJAL.NOPERK', 'C04');
+      $this->db->order_by('ADPA_RAWJAL.JAMCAT', 'desc');
+      return $this->db->get()->result();
+    } else {
+      $this->db->select('ADPA_RAWJAL.MEDREC, ADPA_RAWJAL.NAMAPA, ADPA_RAWJAL.KODEPA, ADPA_MERMAS.TGLLAH');
+      $this->db->from('ADPA_RAWJAL');
+      $this->db->join('ADPA_MERMAS', 'ADPA_RAWJAL.MEDREC = ADPA_MERMAS.MEDREC');
+      $this->db->where('ADPA_RAWJAL.MASUKI', '2023-05-20');
+      $this->db->where('ADPA_RAWJAL.NOPERK', 'C04');
+      $this->db->where('ADPA_RAWJAL.KODEPA', $kodepa);
+      $this->db->order_by('ADPA_RAWJAL.JAMCAT', 'desc');
+      return $this->db->get()->row();
+    }
   }
 
   function rawjal_dokter($kodepa)
