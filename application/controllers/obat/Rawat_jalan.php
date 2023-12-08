@@ -12,14 +12,10 @@ class Rawat_jalan extends CI_Controller
   public function index()
   {
     $rawjal = $this->M_etiket->rawjal();
-    echo "<pre>";
-    print_r($rawjal);
-    exit;
-
     $data = [
       'judul' => 'E-Tiket Obat',
       'rawjal' => $rawjal,
-      'ajax' => '<script src="' . base_url() . 'assets/script/rawjal.js"></script>',
+      'js' => '<script src="' . base_url() . 'assets/script/rawjal.js"></script>',
       'rajal' => base_url('obat/Rawat_jalan'),
       'ranap' => base_url('obat/Rawat_inap'),
       'isi' => 'etiket/v_rawat_jalan',
@@ -28,7 +24,7 @@ class Rawat_jalan extends CI_Controller
     $this->load->view('template/v_wrapper', $data);
   }
 
-  function rawjal_data()
+  public function rawjal_data()
   {
     $id = $this->input->get('id');
     if ($id === null) {
@@ -36,19 +32,21 @@ class Rawat_jalan extends CI_Controller
       $data = array();
       $no = @$_POST['start'];
       foreach ($rawjal as $rj) {
-        $no++;
-        $row = array();
-        $row[] = $no . ".";
-        $row[] = $rj->MASUKI;
-        $row[] = $rj->MEDREC;
-        $row[] = $rj->dosenEmail;
-        $row[] = $rj->dosenNohp;
-        $row[] = $rj->dosenAlamat;
-        $row[] = '<a href="javascript:;" class="btn btn-warning btn-sm item_edit" title="Edit" data="' . $rj->dosenId . '"> <i class="fas fa-edit"></i></a> 
-        <a href="javascript:;" class="btn btn-info btn-sm reset_password" title="Reset Password" data="' . $rj->dosenId . '"> <i class="fas fa-key"></i></a> 
-        <a href="javascript:;" class="btn btn-danger btn-sm item_hapus" title="Delete" data="' . $rj->dosenId . '"> <i class="fas fa-trash"></i></a>';
+        $tambahan = $this->M_etiket->rawjal_dokter($rj->KODEPA);
+        foreach ($tambahan as $t) {
+          $no++;
+          $row = array();
+          $row[] = $no . ".";
+          $row[] = $rj->MEDREC;
+          $row[] = $t->NODOKU;
+          $row[] = $rj->NAMAPA;
+          $row[] = date('d-m-Y', $rj->TGLLAH);
+          $row[] = $t->NODOKU_MINTA;
+          $row[] = '<a href="javascript:;" class="btn btn-primary btn-md lihat" data-toggle="tooltip" title="Lihat Obat" data="' . $rj->KODEPA . '"> <i class="fas fa-book-medical"></i></a> 
+        ';
 
-        $data[] = $row;
+          $data[] = $row;
+        }
       }
       $output = [
         "draw" => @$_POST['draw'],
@@ -56,9 +54,34 @@ class Rawat_jalan extends CI_Controller
       ];
       echo json_encode($output);
     } else {
-      $dosen = $this->Dosen_m->list($id);
-      echo json_encode($dosen);
+      $obat = $this->M_etiket->rawjal($id);
+      echo json_encode($obat);
     }
+  }
+
+  public function getObat()
+  {
+    $id = $this->input->get('id');
+    $obat = $this->M_etiket->rawjal_obat($id);
+    $data = array();
+    $no = @$_POST['start'];
+    foreach ($obat as $o) {
+      $no++;
+      $row = array();
+      $row[] = $no . ".";
+      $row[] = $o->NABARA;
+      $row[] = $o->NABARA;
+      $row[] = $o->NABARA;
+      $row[] = $o->NABARA;
+      $row[] = '<a href="javascript:;" class="btn btn-primary btn-md lihat" data-toggle="tooltip" title="Lihat Obat" data="' . $o->NABARA . '"> <i class="fas fa-book-medical"></i></a> 
+        ';
+      $data[] = $row;
+    }
+    $output = [
+      "draw" => @$_POST['draw'],
+      "data" => $data,
+    ];
+    echo json_encode($output);
   }
 }
 

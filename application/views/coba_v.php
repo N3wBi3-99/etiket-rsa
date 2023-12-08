@@ -44,7 +44,7 @@
         select: function (event, ui) {
           // Set selection
           $('#autouser').val(ui.item.value + ' | ' + ui.item.label); // display the selected text
-          $('#userid').val(ui.item.value); // save selected id to input
+          $('#userid').val(ui.item.label_id); // save selected id to input
           return false;
         }
       }) .data("ui-autocomplete")._renderItem = function (ul, item) {

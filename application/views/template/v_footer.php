@@ -44,7 +44,7 @@
    const base_url = '<?= base_url() ?>';
  </script>
 
- <?= (isset($ajax)) ? $ajax : ''; ?>
+ <?= (isset($js)) ? $js : ''; ?>
  <?= $this->session->flashdata('message'); ?>
 
  <script>

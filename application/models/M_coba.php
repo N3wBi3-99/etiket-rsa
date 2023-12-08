@@ -8,11 +8,13 @@ class M_coba extends CI_Model {
          $this->db->select('TOP (10) *');
          $this->db->where("code like '%".$postData['search']."%' ");
          $this->db->or_where("name_en like '%".$postData['search']."%' ");
+		 $this->db->or_where("name_id like '%".$postData['search']."%' ");
          $records = $this->db->get('PKU.dbo.icds')->result();
          foreach($records as $row ){
             $response[] = array(
               "value"=>$row->code,
-              "label"=>$row->name_en);
+              "label"=>$row->name_en,
+			  "label_id"=>$row->name_id);
          }
        }
   
