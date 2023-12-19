@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Rawat_jalan extends CI_Controller
+class Ugd extends CI_Controller
 {
   public function __construct()
   {
@@ -15,11 +15,11 @@ class Rawat_jalan extends CI_Controller
     $data = [
       'judul' => 'E-Tiket Obat',
       'rawjal' => $rawjal,
-      'js' => '<script src="' . base_url() . 'assets/script/rawjal.js"></script>',
+      'js' => '<script src="' . base_url() . 'assets/script/ugd.js"></script>',
       'ugd' => base_url('obat/Ugd'),
       'rajal' => base_url('obat/Rawat_jalan'),
       'ranap' => base_url('obat/Rawat_inap'),
-      'isi' => 'etiket/v_rawat_jalan',
+      'isi' => 'etiket/v_ugd',
     ];
 
     $this->load->view('template/v_wrapper', $data);
@@ -33,7 +33,7 @@ class Rawat_jalan extends CI_Controller
       $data = array();
       $no = @$_POST['start'];
       foreach ($rawjal as $rj) {
-        $tambahan = $this->M_etiket->rawjal_dokter($rj->KODEPA);
+        $tambahan = $this->M_etiket->ugd_rawjal_dokter($rj->KODEPA);
         foreach ($tambahan as $t) {
           $no++;
           $row = array();
@@ -64,7 +64,7 @@ class Rawat_jalan extends CI_Controller
   {
     $id = $this->input->get('id');
     $pasien = $this->M_etiket->rawjal($id);
-    $obat = $this->M_etiket->rawjal_obat($id);
+    $obat = $this->M_etiket->ugd_obat($id);
     $data = array();
     $no = @$_POST['start'];
     foreach ($obat as $o) {
@@ -72,9 +72,9 @@ class Rawat_jalan extends CI_Controller
       $row = array();
       $row[] = $no . ".";
       $row[] = $o->NABARA;
-      $row[] = '<input type="text" class="form-control" value="">';
-      $row[] = '<input type="text" class="form-control" value="">';
-      $row[] = '<input type="text" class="form-control" value="">';
+      $row[] = $o->NABARA;
+      $row[] = $o->NABARA;
+      $row[] = $o->NABARA;
       $row[] = '<a href="javascript:;" class="btn btn-primary btn-md lihat" data-toggle="tooltip" title="Lihat Obat" data="' . $o->NABARA . '"> <i class="fas fa-book-medical"></i></a> 
         ';
       $data[] = $row;

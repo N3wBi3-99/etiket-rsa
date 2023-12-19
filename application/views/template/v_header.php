@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/toastr/toastr.min.css">
   <!-- iCheck -->
@@ -27,6 +30,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-select/css/select.bootstrap4.min.css">
 </head>
 
 <body class="sidebar-mini layout-fixed sidebar-collapse">

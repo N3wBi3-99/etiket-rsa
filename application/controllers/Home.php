@@ -8,6 +8,7 @@ class Home extends CI_Controller
       'judul' => 'E-Tiket Obat',
       'rajal' => base_url('obat/Rawat_jalan'),
       'ranap' => base_url('obat/Rawat_inap'),
+      'ugd' => base_url('obat/Ugd'),
       'isi'   => 'home/v_home'
     ];
 

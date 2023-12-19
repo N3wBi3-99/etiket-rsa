@@ -33,6 +33,15 @@
              </p>
            </a>
          </li>
+         <li class="nav-item">
+           <a href="<?= $ugd ?>" class="nav-link <?= $this->uri->segment('2') == 'Ugd' ? 'active' : ''  ?>">
+             <i class="nav-icon fas fa-clinic-medical"></i>
+             <p>
+               UGD
+               <span class="right badge badge-danger">New</span>
+             </p>
+           </a>
+         </li>
        </ul>
      </nav>
      <!-- /.sidebar-menu -->

@@ -3,12 +3,44 @@
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
-      <div class="card">
-        <div class="card-header bg-success">
-          <h3 class="card-title">Etiket Resep Harian Rawat Inap</h3>
+      <div class="card card-success collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title">Etiket Resep Harian UGD (Rawat Jalan)</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
         <div class="card-body">
-          <table id="rawina" class="table table-bordered table-striped" style="width:100%">
+          <table id="rawjal" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>NO. RM</th>
+                <th>BUKTI</th>
+                <th>NAMA PASIEN</th>
+                <th>TANGGAL LAHIR</th>
+                <th>NAMA DOKTER</th>
+                <th>AKSI</th>
+              </tr>
+            </thead>
+            <tbody id="tampil_data">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card card-success collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title">Etiket Resep Harian UGD (Rawat Inap)</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <table id="rawnap" class="table table-bordered table-striped" style="width:100%">
             <thead>
               <tr>
                 <th>No</th>
@@ -31,7 +63,7 @@
   <!-- /.content-header -->
 
   <!-- lihat obat -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="dataObat">
+  <div class="modal fade" tabindex="-1" role="dialog" id="dataObatJalan">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -44,12 +76,7 @@
           <table id="obat" class="table table-bordered table-striped" style="width:100%">
             <thead>
               <tr>
-                <th class="text-center">
-                  <div class="custom-checkbox custom-control">
-                    <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                    <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                  </div>
-                </th>
+                <th>No</th>
                 <th>NAMA OBAT</th>
                 <th>ATURAN</th>
                 <th>WAKTU</th>
@@ -64,7 +91,7 @@
         </div>
         <div class="modal-footer bg-whitesmoke br">
           <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Batal</button>
-          <button type="button" id="cetak" class="btn btn-primary">Cetak</button>
+          <button type="submit" id="simpan" class="btn btn-primary">Cetak</button>
         </div>
       </div>
     </div>

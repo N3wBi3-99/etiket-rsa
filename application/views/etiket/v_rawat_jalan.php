@@ -8,7 +8,7 @@
           <h3 class="card-title">Etiket Resep Harian Rawat Jalan</h3>
         </div>
         <div class="card-body">
-          <table id="rawjal" class="table table-bordered table-striped nowrap" style="width:100%">
+          <table id="rawjal" class="table table-bordered table-striped" style="width:100%">
             <thead>
               <tr>
                 <th>No</th>
@@ -44,6 +44,7 @@
           <table id="obat" class="table table-bordered table-striped" style="width:100%">
             <thead>
               <tr>
+                <!-- <th>&nbsp;</th> -->
                 <th>No</th>
                 <th>NAMA OBAT</th>
                 <th>ATURAN</th>
@@ -57,9 +58,10 @@
             </tbody>
           </table>
         </div>
+        <a target="_blank" id="getSelectedRowsBtn">Get Selected Rows</a>
         <div class="modal-footer bg-whitesmoke br">
           <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Batal</button>
-          <button type="submit" id="simpan" class="btn btn-primary">Cetak</button>
+          <button type="button" id="cetak" class="btn btn-primary">Cetak</button>
         </div>
       </div>
     </div>

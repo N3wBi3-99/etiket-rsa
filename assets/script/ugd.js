@@ -3,7 +3,7 @@ $(document).ready(function () {
 		processing: false,
 		serverside: false,
 		ajax: {
-			url: base_url + "obat/Rawat_jalan/rawjal_data",
+			url: base_url + "obat/Ugd/rawjal_data",
 			type: "GET",
 		},
 		columnDefs: [
@@ -11,6 +11,7 @@ $(document).ready(function () {
 				targets: [-1],
 				className: "text-center",
 				orderable: false,
+				width: "10px",
 			},
 		],
 	});
@@ -36,55 +37,30 @@ $(document).ready(function () {
 			}
 		}
 
-		$("#dataObat").modal("show");
+		$("#dataObatJalan").modal("show");
 		$(".modal-title").text(pasien[3] + " ( " + age + " Tahun )");
 
 		// proses ajax tabel obat
 		let id = $(this).attr("data");
 		let obat = $("#obat").DataTable({
+			select: true,
+			processing: false,
+			serverside: false,
 			ajax: {
 				type: "GET",
 				data: { id: id },
-				url: base_url + "obat/Rawat_jalan/getObat",
+				url: base_url + "obat/Ugd/getObat",
 			},
 			columnDefs: [
 				{
+					targets: [-1],
+					className: "text-center",
 					orderable: false,
-					defaultContent: "",
-					className: "select-checkbox",
-					targets: 0,
 				},
 			],
-			select: {
-				style: "multi",
-				selector: "td:first-child",
-			},
 		});
-
-		// Get selected rows when the button is clicked
-		$("#getSelectedRowsBtn").on("click", function () {
-			var selectedRows = $("#obat")
-				.DataTable()
-				.rows({ selected: true })
-				.nodes();
-			// var selectedRows = table.rows({ selected: true }).nodes();
-			var selectedRowsData = [];
-			$(selectedRows).each(function () {
-				var rowData = [];
-				// Get the data from the cells in the row
-
-				$("input", this).each(function () {
-					rowData.push($(this).val());
-				});
-				selectedRowsData.push(rowData);
-			});
-
-			console.log(selectedRowsData);
-			// You can perform actions with the selectedRowsData here
-		});
-
 		// end
-		$("#dataObat").on("hide.bs.modal", function () {
+		$("#dataObatJalan").on("hide.bs.modal", function () {
 			obat.destroy();
 		});
 		return false;
